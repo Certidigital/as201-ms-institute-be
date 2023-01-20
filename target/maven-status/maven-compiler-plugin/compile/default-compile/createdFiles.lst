@@ -1,0 +1,6 @@
+com\as201msinstitute\As201MsInstituteApplication.class
+com\as201msinstitute\repository\InstituteRepository.class
+com\as201msinstitute\service\impl\InstituteServiceImpl.class
+com\as201msinstitute\service\InstituteService.class
+com\as201msinstitute\controller\InstituteController.class
+com\as201msinstitute\model\Institute.class

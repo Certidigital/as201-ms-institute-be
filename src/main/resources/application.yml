@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: as201-ms-institute
+  r2dbc:
+    url: ${db.url}
+    username: ${db.username}
+    password: ${db.password}
+server:
+  port: 8083
