@@ -7,3 +7,31 @@ spring:
     password: ${db.password}
 server:
   port: 8083
+
+management:
+  metrics:
+    tags:
+      application: ${spring.application.name}
+      service: ${spring.application.name}
+      instance: ${spring.application.name}
+    enable:
+      jvm: true
+      process: true
+      tomcat: true
+      system: true
+      logback: true
+    distribution:
+      slo:
+        http.server.requests: 50ms
+      percentiles-histogram:
+        http.server.requests: true
+      percentiles:
+        http.server.requests: 0.99
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    metrics:
+      enabled: true
