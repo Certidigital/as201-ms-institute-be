@@ -13,4 +13,12 @@ public interface InstituteRepository extends ReactiveCrudRepository<Institute, L
     @Query("SELECT id,CONCAT(ruc,', ',name) as name,active FROM institute where UPPER(name) like UPPER(:term) OR UPPER(ruc) like UPPER(:term) AND active=true")
     Flux<Institute> findByName(@Param("term") String term);
 
+    @Query("SELECT * FROM institute WHERE active = :active ORDER BY id DESC")
+    Flux<Institute> findByStatus(@Param("active") boolean status);
+
+    @Query("SELECT * FROM institute ORDER BY id DESC")
+    Flux<Institute> findAll();
+
+
+
 }

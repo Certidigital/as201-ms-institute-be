@@ -21,6 +21,12 @@ public class InstituteController {
         return instituteService.findAll();
     }
 
+    @GetMapping("/status/{status}")
+    public Flux<Institute> findInstituteByStatus(@PathVariable boolean status) {
+        return instituteService.findStatus(status);
+    }
+
+
     @GetMapping("/{id}")
     Mono<Institute>findId(@PathVariable Long id){
         return instituteService.findId(id);

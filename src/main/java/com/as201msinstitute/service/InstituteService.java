@@ -11,6 +11,8 @@ public interface InstituteService {
 
     Flux<Institute> findAll();
 
+    Flux<Institute> findStatus(boolean active);
+
     Mono<Institute> findId(Long id);
 
     Flux<Institute> findIds(List<Long> id);

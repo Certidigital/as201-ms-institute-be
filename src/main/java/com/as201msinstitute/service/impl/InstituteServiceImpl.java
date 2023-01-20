@@ -22,6 +22,11 @@ public class InstituteServiceImpl implements InstituteService {
     }
 
     @Override
+    public Flux<Institute> findStatus(boolean active) {
+        return instituteRepository.findByStatus(active);
+    }
+
+    @Override
     public Mono<Institute> findId(Long id) {
         return instituteRepository.findById(id);
     }
