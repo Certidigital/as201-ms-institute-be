@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  postgre-db:
+    image: "postgres:10-alpine"
+    container_name: "postgre-db"
+    volumes:
+      - ./sql_files:/docker-entrypoint-initdb.d
+    env_file:
+      - dev.env
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  ms-institute:
+#    build: .
+    container_name: ms-institute
+    image: gcr.io/envi-374600/as201-ms-institute:v5
+    env_file:
+      - dev.env
+    ports:
+      - "8083:8083"
+    depends_on:
+      postgre-db:
+        condition: service_healthy
