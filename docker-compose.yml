@@ -18,7 +18,7 @@ services:
   ms-institute:
 #    build: .
     container_name: ms-institute
-    image: gcr.io/envi-374600/as201-ms-institute:v5
+    image: flavioillanes/as201-ms-institute:v24
     env_file:
       - dev.env
     ports:

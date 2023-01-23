@@ -2,7 +2,7 @@ spring:
   application:
     name: as201-ms-institute
   r2dbc:
-    url: ${DB_URL}
+    url:  ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
 server:
@@ -31,7 +31,15 @@ management:
     enabled-by-default: true
     web:
       exposure:
-        include: "*"
+        include: "prometheus, health"
   endpoint:
     metrics:
       enabled: true
+    health:
+      probes:
+        enabled: 'true'
+  health:
+    readinessState:
+      enabled: 'true'
+    livenessState:
+      enabled: 'true'

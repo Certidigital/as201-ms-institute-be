@@ -13,7 +13,6 @@ test:
 
 run:
 	make down
-	make build
 	docker-compose up --build -d
 	make logs
 
@@ -35,8 +34,8 @@ down:
 	docker-compose down
 
 build-image:
-	docker build . -t gcr.io/envi-374600/as201-ms-institute:v5
+	docker build . -t flavioillanes/as201-ms-institute:v24
 
 push-image:
 	make build
-	docker push gcr.io/envi-374600/as201-ms-institute:v5
+	docker push flavioillanes/as201-ms-institute:v24

@@ -1,48 +1,48 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-career-be
+  name: ms-institute-be
   labels:
-    app: ms-career-be
+    app: ms-institute-be
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ms-career-be
+      app: ms-institute-be
   template:
     metadata:
       labels:
-        app: ms-career-be
+        app: ms-institute-be
     spec:
       #      imagePullSecrets:
       #        - name: image-pull-secret
       containers:
-        - name: ms-career-be
-          image: martinsam16xyz/ms-career-be:latest
-          #          resources:
-          #            limits:
-          #              memory: "128Mi"
-          #              cpu: "500m"
+        - name: ms-institute-be
+          image:  flavioillanes/as201-ms-institute:v24
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
           readinessProbe:
-            initialDelaySeconds: 3
+            initialDelaySeconds: 50
             periodSeconds: 3
             httpGet:
-              port: 8085
+              port: 8083
               path: /actuator/health/readiness
           livenessProbe:
-            initialDelaySeconds: 3
+            initialDelaySeconds: 50
             periodSeconds: 3
             httpGet:
-              port: 8085
+              port: 8083
               path: /actuator/health/liveness
           envFrom:
             - secretRef:
-                name: ms-career-secret
+                name: ms-institute-secret
                 optional: false
             - configMapRef:
-                name: ms-career-config-map
+                name: ms-institute-config-map
                 optional: false
           ports:
             - name: http
-              containerPort: 8085
+              containerPort: 8083
               protocol: TCP

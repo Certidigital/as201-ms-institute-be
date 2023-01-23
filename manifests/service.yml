@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms-institute-be
+spec:
+  ports:
+    - nodePort: 31000
+      port: 80
+      targetPort: 8083
+  selector:
+    app: ms-institute-be
+  type: NodePort
