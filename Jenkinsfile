@@ -3,7 +3,9 @@ pipeline{
     stages{
         stage("test"){
             steps{
+                dir("./"){
                     sh "mvn complie clean test"
+                }
             }
             post{
                 always{
