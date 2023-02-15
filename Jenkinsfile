@@ -3,9 +3,7 @@ pipeline{
     stages{
         stage("test"){
             steps{
-                dir('AS201-MS-INSTITUTE-BE'){
                     sh "mvn complie clean test"
-                }
             }
             post{
                 always{
