@@ -4,7 +4,7 @@ pipeline{
         stage("test"){
             steps{
                 dir("./"){
-                    sh "mvn complie clean test"
+                    sh "mvn clean compile test"
                 }
             }
             post{
